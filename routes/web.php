@@ -14,3 +14,19 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
+Route::get('/andy', function () {
+    return 'Hello World';
+});
+
+Route::get('/andy1', function () {
+    return ['foo' => 'bar'];
+});
+
+Route::get('/andy2', function (){
+    return view('test');
+});
