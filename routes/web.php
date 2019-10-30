@@ -44,3 +44,5 @@ Route::get('/posts/{post}', function ($data) {
 });
 
 Route::get('/blog/{blog}', 'BlogController@show');
+
+Route::get('/thread/{thread}','ThreadController@show');

@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.4.1 on 2019-10-30 09:39:24.
+ * Generated for Laravel 6.4.1 on 2019-10-30 22:23:26.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -18487,6 +18487,20 @@ namespace Illuminate\Support {
     class Fluent {}
 }
 
+namespace App {
+    /**
+    * @method \Illuminate\Database\Eloquent\Collection|Assignment[]|Assignment create($attributes = [])
+    * @method \Illuminate\Database\Eloquent\Collection|Assignment[]|Assignment make($attributes = [])
+    */
+    class AssignmentFactoryBuilder extends \Illuminate\Database\Eloquent\FactoryBuilder {}
+}
+namespace App {
+    /**
+    * @method \Illuminate\Database\Eloquent\Collection|Project[]|Project create($attributes = [])
+    * @method \Illuminate\Database\Eloquent\Collection|Project[]|Project make($attributes = [])
+    */
+    class ProjectFactoryBuilder extends \Illuminate\Database\Eloquent\FactoryBuilder {}
+}
 namespace App {
     /**
     * @method \Illuminate\Database\Eloquent\Collection|User[]|User create($attributes = [])
