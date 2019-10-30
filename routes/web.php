@@ -27,6 +27,20 @@ Route::get('/andy1', function () {
     return ['foo' => 'bar'];
 });
 
-Route::get('/andy2', function (){
-    return view('test');
+Route::get('/andy2', function () {
+    return view('test', ['name' => request('name')]);
 });
+
+Route::get('/posts/{post}', function ($data) {
+    $posts = [
+        'my-first-one' => 'Hello, this is my first blog post!',
+        'my-second-one' => 'Now, I am getting the hang of this blogging thing',
+    ];
+    if (!array_key_exists($data, $posts)) {
+        abort(404, 'Sorry We could not find the post');
+    }
+
+    return view('post', ['post' => $posts[$data]]);
+});
+
+Route::get('/blog/{blog}', 'BlogController@show');

@@ -9,6 +9,6 @@
 </head>
 <body>
 
-<h1>Test Complete! and hello {{$name}}</h1>
+<h1>Post {{$post}}</h1>
 </body>
 </html>
