@@ -11,10 +11,24 @@
 |
 */
 
+use App\Article;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/simple', function () {
+    return view('simple');
+});
+
+Route::get('/about', function () {
+    $articles = Article::latest()->get();
+
+    return view('about', ['articles' => $articles]);
+});
+Route::get('/contact', function () {
+    return view('contact');
+});
 Route::get('/welcome', function () {
     return view('welcome');
 });
@@ -45,4 +59,8 @@ Route::get('/posts/{post}', function ($data) {
 
 Route::get('/blog/{blog}', 'BlogController@show');
 
-Route::get('/thread/{thread}','ThreadController@show');
+Route::get('/thread/{thread}', 'ThreadController@show');
+
+Route::get('/articles', 'ArticleController@index');
+
+Route::get('/articles/{article}', 'ArticleController@show');
