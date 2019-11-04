@@ -8,15 +8,30 @@
                 @csrf
                 <div>
                     <label for="title">Title</label>
-                    <div><input type="text" name="title" id="title"/></div>
+                    <div>
+                        <input type="text" name="title" id="title" value="{{old('title')}}"/>
+                        @error('title')
+                        <p>{{$errors->first('title')}}</p>
+                        @enderror
+                    </div>
                 </div>
                 <div>
                     <label for="excerpt">Excerpt</label>
-                    <div><input type="text" name="excerpt" id="excerpt"/></div>
+                    <div>
+                        <input type="text" name="excerpt" id="excerpt" value="{{old('excerpt')}}"/>
+                        @error('excerpt')
+                        <p>{{$errors->first('excerpt')}}</p>
+                        @enderror
+                    </div>
                 </div>
                 <div>
                     <label for="body">Body</label>
-                    <div><input type="text" name="body" id="body"/></div>
+                    <div>
+                        <input type="text" name="body" id="body" value="{{old('body')}}"/>
+                        @error('body')
+                        <p>{{$errors->first('body')}}</p>
+                        @enderror
+                    </div>
                 </div>
                 <div>
                     <button type="submit">Submit</button>

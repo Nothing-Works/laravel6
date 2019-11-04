@@ -65,3 +65,5 @@ Route::get('/articles', 'ArticleController@index');
 Route::get('/articles/create', 'ArticleController@create');
 Route::post('/articles', 'ArticleController@store');
 Route::get('/articles/{article}', 'ArticleController@show');
+Route::get('/articles/{article}/edit', 'ArticleController@edit');
+Route::patch('/articles/{article}', 'ArticleController@update');

@@ -37,12 +37,13 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $article = new Article();
-        $article->title = $request->get('title');
-        $article->body = $request->get('body');
-        $article->excerpt = $request->get('excerpt');
+        $attributes = $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+            'excerpt' => 'required',
+        ]);
 
-        $article->save();
+        Article::create($attributes);
 
         return  redirect('/articles');
     }
@@ -64,6 +65,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
+        return view('articles.edit', ['article' => $article]);
     }
 
     /**
@@ -73,6 +75,15 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
+        $attributes = $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+            'excerpt' => 'required',
+        ]);
+
+        $article->update($attributes);
+
+        return redirect($article->path());
     }
 
     /**
