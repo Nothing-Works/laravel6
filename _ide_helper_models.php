@@ -15,11 +15,15 @@ namespace App{
  * App\Article
  *
  * @property int $id
+ * @property int $user_id
  * @property string $title
  * @property string $excerpt
  * @property string $body
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Tag[] $tags
+ * @property-read int|null $tags_count
+ * @property-read \App\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article query()
@@ -29,6 +33,7 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereUserId($value)
  */
 	class Article extends \Eloquent {}
 }
@@ -88,6 +93,7 @@ namespace App{
  * @property int $id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Project newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Project newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Project query()
@@ -96,6 +102,27 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Project whereUpdatedAt($value)
  */
 	class Project extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\Tag
+ *
+ * @property int $id
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Article[] $articles
+ * @property-read int|null $articles_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Tag newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Tag newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Tag query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Tag whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Tag whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Tag whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Tag whereUpdatedAt($value)
+ */
+	class Tag extends \Eloquent {}
 }
 
 namespace App{
@@ -110,8 +137,12 @@ namespace App{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Article[] $articles
+ * @property-read int|null $articles_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Project[] $projects
+ * @property-read int|null $projects_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User query()
