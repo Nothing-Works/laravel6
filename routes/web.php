@@ -12,6 +12,7 @@
 */
 
 use App\Article;
+use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,6 +29,14 @@ Route::get('/about', function () {
 });
 Route::get('/contact', function () {
     return view('contact');
+});
+Route::post('/contact', function () {
+    $email = request()->validate(['email' => 'required|email']);
+    Mail::raw('It works', function ($message) use ($email) {
+        $message->to($email['email'])->subject('hello there');
+    });
+
+    return redirect('/contact')->with('message', 'email sent');
 });
 Route::get('/welcome', function () {
     return view('welcome');
