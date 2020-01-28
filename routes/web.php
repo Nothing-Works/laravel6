@@ -12,6 +12,7 @@
 */
 
 use App\Article;
+use App\Mail\ContactMe;
 use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
@@ -32,9 +33,11 @@ Route::get('/contact', function () {
 });
 Route::post('/contact', function () {
     $email = request()->validate(['email' => 'required|email']);
-    Mail::raw('It works', function ($message) use ($email) {
-        $message->to($email['email'])->subject('hello there');
-    });
+    // text email
+    // Mail::raw('It works', function ($message) use ($email) {
+    //     $message->to($email['email'])->subject('hello there');
+    // });
+    Mail::to($email)->send(new ContactMe('laravel'));
 
     return redirect('/contact')->with('message', 'email sent');
 });
