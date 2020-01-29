@@ -74,6 +74,8 @@ Route::get('/blog/{blog}', 'BlogController@show');
 Route::get('/thread/{thread}', 'ThreadController@show');
 
 Route::get('/articles', 'ArticleController@index');
+Route::get('/payments/create', 'PaymentController@create')->middleware('auth');
+Route::post('/payments', 'PaymentController@store')->middleware('auth');
 Route::get('/articles/create', 'ArticleController@create');
 Route::post('/articles', 'ArticleController@store');
 Route::get('/articles/{article}', 'ArticleController@show');
