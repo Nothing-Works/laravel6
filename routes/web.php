@@ -79,3 +79,7 @@ Route::post('/articles', 'ArticleController@store');
 Route::get('/articles/{article}', 'ArticleController@show');
 Route::get('/articles/{article}/edit', 'ArticleController@edit');
 Route::patch('/articles/{article}', 'ArticleController@update');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
