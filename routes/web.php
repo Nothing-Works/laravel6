@@ -75,6 +75,7 @@ Route::get('/thread/{thread}', 'ThreadController@show');
 
 Route::get('/articles', 'ArticleController@index');
 Route::get('/payments/create', 'PaymentController@create')->middleware('auth');
+Route::get('/notifications', 'UserNotificationController@show')->middleware('auth');
 Route::post('/payments', 'PaymentController@store')->middleware('auth');
 Route::get('/articles/create', 'ArticleController@create');
 Route::post('/articles', 'ArticleController@store');
