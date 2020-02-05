@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.14.0 on 2020-02-05 01:28:39.
+ * Generated for Laravel 6.14.0 on 2020-02-05 03:38:20.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -15302,6 +15302,228 @@ namespace Facade\Ignition\Facades {
  
 }
 
+namespace Nexmo\Laravel\Facade { 
+
+    /**
+     * Nexmo API Client, allows access to the API from PHP.
+     *
+     * @property \Nexmo\Message\Client $message
+     * @property \Nexmo\Call\Collection|\Nexmo\Call\Call[] $calls
+     * @method \Nexmo\Message\Client message()
+     * @method \Nexmo\Verify\Client  verify()
+     * @method \Nexmo\Application\Client applications()
+     * @method \Nexmo\Call\Collection calls()
+     * @method \Nexmo\Numbers\Client numbers()
+     */ 
+    class Nexmo {
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getRestUrl()
+        {
+                        /** @var \Nexmo\Client $instance */
+                        return $instance->getRestUrl();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getApiUrl()
+        {
+                        /** @var \Nexmo\Client $instance */
+                        return $instance->getApiUrl();
+        }
+        
+        /**
+         * Set the Http Client to used to make API requests.
+         * 
+         * This allows the default http client to be swapped out for a HTTPlug compatible
+         * replacement.
+         *
+         * @param \Nexmo\HttpClient $client
+         * @return \Nexmo\Client 
+         * @static 
+         */ 
+        public static function setHttpClient($client)
+        {
+                        /** @var \Nexmo\Client $instance */
+                        return $instance->setHttpClient($client);
+        }
+        
+        /**
+         * Get the Http Client used to make API requests.
+         *
+         * @return \Nexmo\HttpClient 
+         * @static 
+         */ 
+        public static function getHttpClient()
+        {
+                        /** @var \Nexmo\Client $instance */
+                        return $instance->getHttpClient();
+        }
+        
+        /**
+         * Set the factory used to create API specific clients.
+         *
+         * @param \Nexmo\FactoryInterface $factory
+         * @return \Nexmo\Client 
+         * @static 
+         */ 
+        public static function setFactory($factory)
+        {
+                        /** @var \Nexmo\Client $instance */
+                        return $instance->setFactory($factory);
+        }
+        
+        /**
+         * 
+         *
+         * @param \Nexmo\RequestInterface $request
+         * @param \Nexmo\Signature $signature
+         * @return \Nexmo\RequestInterface 
+         * @static 
+         */ 
+        public static function signRequest($request, $credentials)
+        {
+                        return \Nexmo\Client::signRequest($request, $credentials);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function authRequest($request, $credentials)
+        {
+                        return \Nexmo\Client::authRequest($request, $credentials);
+        }
+        
+        /**
+         * 
+         *
+         * @param array $claims
+         * @return \Lcobucci\JWT\Token 
+         * @static 
+         */ 
+        public static function generateJwt($claims = [])
+        {
+                        /** @var \Nexmo\Client $instance */
+                        return $instance->generateJwt($claims);
+        }
+        
+        /**
+         * Takes a URL and a key=>value array to generate a GET PSR-7 request object
+         *
+         * @param string $url The URL to make a request to
+         * @param array $params Key=>Value array of data to use as the query string
+         * @return \Psr\Http\Message\ResponseInterface 
+         * @static 
+         */ 
+        public static function get($url, $params = [])
+        {
+                        /** @var \Nexmo\Client $instance */
+                        return $instance->get($url, $params);
+        }
+        
+        /**
+         * Takes a URL and a key=>value array to generate a POST PSR-7 request object
+         *
+         * @param string $url The URL to make a request to
+         * @param array $params Key=>Value array of data to send
+         * @return \Psr\Http\Message\ResponseInterface 
+         * @static 
+         */ 
+        public static function post($url, $params)
+        {
+                        /** @var \Nexmo\Client $instance */
+                        return $instance->post($url, $params);
+        }
+        
+        /**
+         * Takes a URL and a key=>value array to generate a POST PSR-7 request object
+         *
+         * @param string $url The URL to make a request to
+         * @param array $params Key=>Value array of data to send
+         * @return \Psr\Http\Message\ResponseInterface 
+         * @static 
+         */ 
+        public static function postUrlEncoded($url, $params)
+        {
+                        /** @var \Nexmo\Client $instance */
+                        return $instance->postUrlEncoded($url, $params);
+        }
+        
+        /**
+         * Takes a URL and a key=>value array to generate a PUT PSR-7 request object
+         *
+         * @param string $url The URL to make a request to
+         * @param array $params Key=>Value array of data to send
+         * @return \Psr\Http\Message\ResponseInterface 
+         * @static 
+         */ 
+        public static function put($url, $params)
+        {
+                        /** @var \Nexmo\Client $instance */
+                        return $instance->put($url, $params);
+        }
+        
+        /**
+         * Takes a URL and a key=>value array to generate a DELETE PSR-7 request object
+         *
+         * @param string $url The URL to make a request to
+         * @return \Psr\Http\Message\ResponseInterface 
+         * @static 
+         */ 
+        public static function delete($url)
+        {
+                        /** @var \Nexmo\Client $instance */
+                        return $instance->delete($url);
+        }
+        
+        /**
+         * Wraps the HTTP Client, creates a new PSR-7 request adding authentication, signatures, etc.
+         *
+         * @param \Psr\Http\Message\RequestInterface $request
+         * @return \Psr\Http\Message\ResponseInterface 
+         * @static 
+         */ 
+        public static function send($request)
+        {
+                        /** @var \Nexmo\Client $instance */
+                        return $instance->send($request);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function serialize($entity)
+        {
+                        /** @var \Nexmo\Client $instance */
+                        return $instance->serialize($entity);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function unserialize($entity)
+        {
+                        /** @var \Nexmo\Client $instance */
+                        return $instance->unserialize($entity);
+        }
+         
+    }
+ 
+}
+
 
 namespace  { 
 
@@ -18183,6 +18405,8 @@ namespace  {
     class View extends \Illuminate\Support\Facades\View {}
 
     class Flare extends \Facade\Ignition\Facades\Flare {}
+
+    class Nexmo extends \Nexmo\Laravel\Facade\Nexmo {}
  
 }
 
