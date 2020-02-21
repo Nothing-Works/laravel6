@@ -15,6 +15,18 @@ use App\Article;
 use App\Mail\ContactMe;
 use Illuminate\Support\Facades\Mail;
 
+Route::get('/token', function () {
+    return view('token');
+});
+
+Route::put('/token', function () {
+    $token = Str::random(80);
+
+    Auth::user()->forceFill(['api_token' => hash('sha256', $token)])->save();
+
+    return back()->with('message', $token);
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
