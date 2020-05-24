@@ -88,7 +88,7 @@ Route::get('/thread/{thread}', 'ThreadController@show');
 Route::get('/articles', 'ArticleController@index');
 Route::post('/best-replies/{reply}', 'ConversationBestReplyController@store');
 Route::get('/conversations', 'ConversationController@index');
-Route::get('/conversation/{conversation}', 'ConversationController@show');
+Route::get('/conversation/{conversation}', 'ConversationController@show')->middleware('can:view,conversation');
 Route::get('/payments/create', 'PaymentController@create')->middleware('auth');
 Route::get('/notifications', 'UserNotificationController@show')->middleware('auth');
 Route::post('/payments', 'PaymentController@store')->middleware('auth');

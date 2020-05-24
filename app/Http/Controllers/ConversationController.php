@@ -44,6 +44,9 @@ class ConversationController extends Controller
      */
     public function show(Conversation $conversation)
     {
+        // controller level authorize
+        // $this->authorize('view', $conversation);
+
         return view('conversations.show', compact('conversation'));
     }
 
