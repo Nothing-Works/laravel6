@@ -37,6 +37,14 @@ class ConversationPolicy
     {
     }
 
+    //admin policy level
+    // public function before($user, $ability)
+    // {
+    //     if ('andy' === $user->name) {
+    //         return true;
+    //     }
+    // }
+
     /**
      * Determine whether the user can update the conversation.
      *
