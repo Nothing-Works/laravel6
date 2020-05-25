@@ -25,11 +25,19 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::before(function ($user) {
-            if ('andy' === $user->name) {
+        // simple way to do it globally.
+        // Gate::before(function ($user) {
+        //     if ('andy' === $user->name) {
+        //         return true;
+        //     }
+        // });
+
+        Gate::before(function ($user, $ability) {
+            if ($user->abilities()->contains($ability)) {
                 return true;
             }
         });
+
         // Gate way to do it.
         // Gate::define('update-conversation', function (User $user, Conversation $conversation) {
         //     return $conversation->user->is($user);

@@ -11,8 +11,11 @@
 |
 */
 
+use App\Ability;
 use App\Article;
 use App\Mail\ContactMe;
+use App\Role;
+use App\User;
 use Illuminate\Support\Facades\Mail;
 
 Route::get('/token', function () {
@@ -101,3 +104,22 @@ Route::patch('/articles/{article}', 'ArticleController@update');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/role', function () {
+    // Role::firstOrCreate(['name' => 'manager']);
+    // Ability::firstOrCreate(['name' => 'view_reports']);
+    $user = User::find(49);
+    // return $user->abilities();
+    // $role = Role::find(3);
+    // $ability = Ability::find(2);
+    $user->assignRole('manager');
+    // $role->allowTo($ability);
+});
+
+Route::get('/ability', function () {
+    return view('ability');
+});
+
+Route::get('/reports', function () {
+    return 'the secret reports';
+})->middleware('can:view_reports');

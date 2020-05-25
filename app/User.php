@@ -51,6 +51,25 @@ class User extends Authenticatable
         return $this->hasMany(Reply::class);
     }
 
+    public function abilities()
+    {
+        return $this->roles->map->abilities->flatten()->pluck('name')->unique();
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class)->withTimestamps();
+    }
+
+    public function assignRole($role)
+    {
+        if (is_string($role)) {
+            $role = Role::whereName($role)->firstOrFail();
+        }
+
+        $this->roles()->save($role);
+    }
+
     public function tags()
     {
         return $this->hasMany(Tag::class);
